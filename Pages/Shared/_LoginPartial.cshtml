@@ -1,0 +1,29 @@
+
+@* inject trực tiếp dịch vụ *@
+@using razoWeb.models
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+
+<ul class="navbar_nav" >
+    @if(SignInManager.IsSignedIn(this.User)) {
+        <li class="nav-item" >
+        <a class="nav-link text-darl" asp-area="Identity" asp-page="/Account/Manage/Index">
+            xin chào, @UserManager.GetUserName(this.User)!
+        </a>
+        </li>
+        <li class="nav-item" >
+            <a class="nav-link text-darl" asp-area="Identity" asp-page="/Account/Logout">Đăng Xuất</a>
+        </li>
+
+    }else{
+        <li class="nav-item" >
+        <a class="nav-link text-darl" asp-area="Identity" asp-page="/Account/Register">Đăng Ký</a>
+        </li>
+        <li class="nav-item" >
+            <a class="nav-link text-darl" asp-area="Identity" asp-page="/Account/Login">Đăng Nhập</a>
+        </li>
+        }
+</ul>
